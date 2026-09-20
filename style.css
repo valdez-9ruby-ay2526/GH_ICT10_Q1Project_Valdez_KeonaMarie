@@ -1,0 +1,195 @@
+
+:root {
+    --teal-dark: #0f766e;
+    --teal-main: #0d9488;
+    --teal-light: #2dd4bf;
+    --pink-soft: #fbcfe8;
+    --pink-main: #f472b6;
+    --pink-light: #fdf2f8;
+    --card-bg: rgba(253, 242, 248, 0.92);
+    --text-dark: #115e59;
+    --border-pink: rgba(244, 114, 182, 0.5);
+}
+
+/* Animated Glitter & Dual-Tone Gradient Background */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    min-height: 100vh;
+
+    /* Background Gradient + Multi-layer Sparkle Effect */
+    background-color: var(--teal-main);
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 80px, var(--pink-soft), rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 110px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 170px 130px, var(--pink-main), rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 240px 200px, #ffffff, rgba(0,0,0,0)),
+        linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #f472b6 100%);
+
+    background-repeat: repeat, repeat, repeat, repeat, repeat, no-repeat;
+    background-size: 300px 300px, 250px 250px, 200px 200px, 350px 350px, 280px 280px, cover;
+    animation: glitterSparkle 14s linear infinite;
+}
+
+@keyframes glitterSparkle {
+    0% {
+        background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+    100% {
+        background-position: 300px 600px, -250px 500px, 200px 400px, -350px 700px, 280px 560px, 0 0;
+    }
+}
+
+/* Headings */
+h1, h2, h3 {
+    text-align: center;
+    color: var(--teal-dark);
+    text-shadow:
+        0 0 4px rgba(255, 255, 255, 0.9),
+        0 0 10px var(--pink-soft);
+    margin-bottom: 0.6rem;
+}
+
+h1 {
+    font-size: 2.3rem;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+/* Navigation & Button Links */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+nav a, .button {
+    display: inline-block;
+    color: var(--teal-dark);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 22px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ffffff, var(--pink-soft));
+    border: 2px solid var(--border-pink);
+    box-shadow:
+        0 4px 15px rgba(244, 114, 182, 0.35),
+        inset 0 0 8px #ffffff;
+    transition: all 0.3s ease;
+}
+
+nav a:hover, .button:hover {
+    transform: translateY(-2px) scale(1.04);
+    background: linear-gradient(135deg, var(--pink-soft), #ffffff);
+    box-shadow:
+        0 6px 20px rgba(13, 148, 136, 0.4),
+        inset 0 0 12px #ffffff;
+}
+
+/* Home Page specific button spacing */
+a.button {
+    margin: 10px 6px;
+    text-align: center;
+}
+
+/* Main Container Card */
+.container {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 28px;
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    border-radius: 22px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow:
+        0 12px 35px rgba(15, 118, 110, 0.3),
+        inset 0 0 18px var(--pink-soft);
+    text-align: center;
+}
+
+.menu, #receipt, #sku_result {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 15px;
+    border: 1.5px solid var(--border-pink);
+}
+
+/* Form Controls & Input Fields */
+label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 600;
+    text-align: left;
+    color: var(--teal-dark);
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 11px 14px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1.5px solid var(--teal-main);
+    border-radius: 12px;
+    color: var(--teal-dark);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: var(--pink-main);
+    box-shadow: 0 0 10px var(--pink-soft);
+}
+
+input[type="checkbox"] {
+    accent-color: var(--pink-main);
+    transform: scale(1.25);
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+/* Action Buttons */
+button {
+    width: 100%;
+    margin-top: 18px;
+    padding: 13px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--teal-main), var(--pink-main));
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+    box-shadow:
+        0 4px 15px rgba(244, 114, 182, 0.4),
+        inset 0 0 10px rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.02);
+    box-shadow:
+        0 6px 20px rgba(13, 148, 136, 0.5),
+        inset 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+/* Receipt Display */
+#receipt p, #sku_result p {
+    margin: 8px 0;
+}
+
+.thank-you {
+    margin-top: 14px;
+    font-style: italic;
+    font-weight: bold;
+    color: var(--pink-main);
+}

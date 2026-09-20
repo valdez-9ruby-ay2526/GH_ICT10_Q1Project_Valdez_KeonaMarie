@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+      href="https://pyscript.net/releases/2026.7.3/core.css">
+    <script type="module"
+      src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <title>Receipt Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>🌸 OBMC Entrep Fair 🌸</h1>
+    <h2> 咲こう Coffee Shop 🍵</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="receipt.html">Receipt</a>
+        <a href="sku.html">SKU Generator</a>
+    </nav>
+    <div class="container">
+        <!-- customer info -->
+        <div class="menu">
+            <h3>Customer Information</h3>
+            <label for="customer">Customer Name:</label>
+            <input type="text" id="customer"
+              placeholder="Enter your name">
+        </div>
+        <div class="menu">
+            <h3>Menu</h3>
+            <label>
+                <input type="checkbox" id="item1" value="100">
+                Americano - ₱99
+            </label>
+
+            <label>
+                <input type="checkbox" id="item2" value="140">
+                Spanish Latte - ₱129
+            </label>
+
+            <label>
+                <input type="checkbox" id="item3" value="175">
+                Cold Brew Malt - ₱189
+            </label>
+
+            <label>
+                <input type="checkbox" id="item4" value="140">
+                Affogato - ₱159
+            </label>
+
+            <label>
+                <input type="checkbox" id="item5" value="167">
+                Caramel Macchiato - ₱130
+            </label>
+
+            <!-- creates order -->
+            <button py-click="create_order">
+                Make Order
+            </button>
+        </div>
+
+        <div id="receipt">
+            <h3>----------- Receipt -----------</h3>
+            <p>Customer:
+                <span id="customer_name"></span>
+            </p>
+
+            <p>Subtotal:
+                ₱<span id="subtotal">0.00</span>
+            </p>
+
+            <p>Tax:
+                ₱<span id="vat">0.00</span>
+            </p>
+
+            <p>
+                <strong>
+                    Total: ₱<span id="total">0.00</span>
+                </strong>
+            </p>
+
+            <p class="thank-you">
+                Thank you for ordering!
+            </p>
+        </div>
+    </div>
+    <script type="py">
+from js import document
+
+def create_order(event):
+    customer = document.getElementById("customer").value
+    subtotal = 0.0
+
+    if document.getElementById("item1").checked:
+        subtotal += float(document.getElementById("item1").value)
+
+    if document.getElementById("item2").checked:
+        subtotal += float(document.getElementById("item2").value)
+
+    if document.getElementById("item3").checked:
+        subtotal += float(document.getElementById("item3").value)
+
+    if document.getElementById("item4").checked:
+        subtotal += float(document.getElementById("item4").value)
+
+    if document.getElementById("item5").checked:
+        subtotal += float(document.getElementById("item5").value)
+
+    vat = subtotal * 0.12
+    total = subtotal + vat
+
+    document.getElementById("customer_name").innerText = customer
+    document.getElementById("subtotal").innerText = f"{subtotal:.2f}"
+    document.getElementById("vat").innerText = f"{vat:.2f}"
+    document.getElementById("total").innerText = f"{total:.2f}"
+
+    document.getElementById("receipt").style.display = "block"
+</script>
+</body>
+</html>

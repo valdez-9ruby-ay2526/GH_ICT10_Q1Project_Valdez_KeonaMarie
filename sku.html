@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <title>SKU Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1> 🌸 OBMC Entrep Fair 🌸</h1>
+    <h2> 🧋 SKU Generator 🧋</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="receipt.html">Receipt</a>
+        <a href="sku.html">SKU Generator</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- SKU input form -->
+        <div class="menu">
+
+            <h3>Create a SKU</h3>
+
+            <label for="category">
+                Product Category:
+            </label>
+
+            <input type="text"
+              id="category"
+              placeholder="Example: Coffee">
+
+            <label for="product">
+                Product Name:
+            </label>
+
+            <input type="text"
+              id="product"
+              placeholder="Example: Americano">
+
+            <label for="stock">
+                Stock Quantity:
+            </label>
+
+            <input type="number"
+              id="stock"
+              placeholder="Example: 20">
+            <button py-click="generate_sku">
+                Generate SKU
+            </button>
+
+        </div>
+
+        <div id="sku_result">
+
+            <h3>Your SKU</h3>
+
+            <p id="sku">
+                Your SKU will appear here!
+            </p>
+        </div>
+    </div>
+    <script type="py">
+from js import document
+
+def generate_sku(event):
+    category = document.getElementById("category").value
+    product = document.getElementById("product").value
+    stock = document.getElementById("stock").value
+
+    category_code = category.strip()[:3].upper()
+    product_code = product.strip()[:3].upper()
+
+    sku_text = f"{category_code}-{product_code}-{stock}"
+    document.getElementById("sku").innerText = sku_text
+</script>
+</body>
+</html>
